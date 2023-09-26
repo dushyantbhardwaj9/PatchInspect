@@ -2,9 +2,50 @@
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "1",
+      "Sid": "basicLambdaExecution",
       "Effect": "Allow",
-      "Action": ["logs:*", "kms:*", "events:*", "sqs:*"],
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "kmsPermissions",
+      "Effect": "Allow",
+      "Action": [
+        "kms:Encrypt",
+        "kms:Decrypt",
+        "kms:ReEncrypt*",
+        "kms:GenerateDataKey*",
+        "kms:DescribeKey"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "eventsAndSqs",
+      "Effect": "Allow",
+      "Action": [
+        "events:PutEvents",
+        "events:Describe*",
+        "events:List*",
+        "sqs:SendMessage"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "ec2AndSsm",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:RunInstances*",
+        "ec2:TerminateInstances*",
+        "ec2:List*",
+        "ec2:Describe*",
+        "ssm:List*"
+        "ssm:Describe*"
+
+      ],
       "Resource": "*"
     }
   ]
